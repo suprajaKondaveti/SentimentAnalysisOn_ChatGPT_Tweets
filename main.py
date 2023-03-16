@@ -46,11 +46,13 @@ with st.expander('Analyze CSV'):
         del df['Unnamed: 0']
         df['score'] = df['tweets'].apply(score)
         df['analysis'] = df['score'].apply(analyze)
-        #pos=(df['analysis']=='Positive').sum()
-        #neg=(df['analysis']=='Negative').sum()
-        #neu=(df['analysis']=='Neutral').sum()
-        fig = px.pie(df, values='analysis', names='tweets')
-        st.plotly_chart(fig)
+        labels='Positive','Negative','Neutral'
+        values=[pos,neg,neu]
+        fig1, ax1 = plt.subplots()
+        explode = (0, 0.1, 0) 
+        ax1.pie(values, explode=explode, labels=labels, autopct='%1.1f%%',shadow=True, startangle=90)
+        ax1.axis('equal') 
+        st.pyplot(fig1)
         st.write(df.head())
         
 
