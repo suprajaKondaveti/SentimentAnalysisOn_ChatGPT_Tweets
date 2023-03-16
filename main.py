@@ -39,7 +39,7 @@ with st.expander('Analyze CSV'):
         del df['Unnamed: 0']
         df['score'] = df['tweets'].apply(score)
         df['analysis'] = df['score'].apply(analyze)
-        st.write(df.head(10))
+        st.write(df.head(1000))
 
         @st.cache
         def convert_df(df):
