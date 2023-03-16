@@ -46,6 +46,9 @@ with st.expander('Analyze CSV'):
         del df['Unnamed: 0']
         df['score'] = df['tweets'].apply(score)
         df['analysis'] = df['score'].apply(analyze)
+        pos=(df['analysis']=='Positive').sum()
+        neg=(df['analysis']=='Negative').sum()
+        neu=(df['analysis']=='Neutral').sum()
         labels='Positive','Negative','Neutral'
         values=[pos,neg,neu]
         fig1, ax1 = plt.subplots()
