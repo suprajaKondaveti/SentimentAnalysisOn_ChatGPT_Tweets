@@ -33,9 +33,9 @@ with st.expander('Analyze CSV'):
 
 #
     def analyze(x):
-        if x >= 0.5:
+        if x >0:
             return 'Positive'
-        elif x <= -0.5:
+        elif x <0:
             return 'Negative'
         else:
             return 'Neutral'
