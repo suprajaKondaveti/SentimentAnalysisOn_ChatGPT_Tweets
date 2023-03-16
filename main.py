@@ -12,9 +12,9 @@ with st.expander('Analyze Text'):
     if text:
         blob = TextBlob(text)
         x= round(blob.sentiment.polarity,2)
-        if x >= 0.5:
+        if x >0:
            st.write('Sentiment: Positive')
-        elif x <= -0.5:
+        elif x <0:
             st.write('Sentiment: Negative')
         else:
              st.write('Sentiment: Neutral')
