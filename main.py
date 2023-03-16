@@ -2,7 +2,9 @@ from textblob import TextBlob
 import pandas as pd
 import streamlit as st
 import cleantext
+import plotly.express as px
 
+import matplotlib.pyplot as plt
 
 st.header('Sentiment Analysis')
 with st.expander('Analyze Text'):
@@ -44,7 +46,13 @@ with st.expander('Analyze CSV'):
         del df['Unnamed: 0']
         df['score'] = df['tweets'].apply(score)
         df['analysis'] = df['score'].apply(analyze)
-        st.write(df.head(1000))
+        #pos=(df['analysis']=='Positive').sum()
+        #neg=(df['analysis']=='Negative').sum()
+        #neu=(df['analysis']=='Neutral').sum()
+        fig = px.pie(df, values='analysis', names='tweets')
+        st.plotly_chart(fig)
+        st.write(df.head())
+        
 
         @st.cache
         def convert_df(df):
