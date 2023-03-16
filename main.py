@@ -15,8 +15,7 @@ with st.expander('Analyze Text'):
 
     pre = st.text_input('Clean Text: ')
     if pre:
-        st.write(cleantext.clean(pre, clean_all= False, extra_spaces=True ,
-                                 stopwords=True ,lowercase=True ,numbers=True , punct=True))
+        st.write(cleantext.clean(pre, clean_all= False, extra_spaces=True ,stopwords=True ,lowercase=True ,numbers=True , punct=True))
 
 with st.expander('Analyze CSV'):
     upl = st.file_uploader('Upload file')
