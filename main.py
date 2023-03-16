@@ -9,8 +9,13 @@ with st.expander('Analyze Text'):
     text = st.text_input('Text here: ')
     if text:
         blob = TextBlob(text)
-        st.write('Polarity: ', round(blob.sentiment.polarity,2))
-        st.write('Subjectivity: ', round(blob.sentiment.subjectivity,2))
+        x= round(blob.sentiment.polarity,2)
+        if x >= 0.5:
+           st.write('Sentiment: Positive')
+        elif x <= -0.5:
+            st.write('Sentiment: Negative')
+        else:
+             st.write('Sentiment: Neutral')
 
 
     pre = st.text_input('Clean Text: ')
